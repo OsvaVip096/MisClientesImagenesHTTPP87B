@@ -26,11 +26,13 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
 
             networkImageView = itemView.findViewById(R.id.imgCargarImagen);
             textView = itemView.findViewById(R.id.txtCargarTexto);
+
+            /* TODO: utiliza Volley para cargar la imagen de Internet. */
             imageLoader = MySingleton.getInstance(itemView.getContext()).getImageLoader();
         }
     }
 
-    public List<Card> cardList;
+    public List<Card> cardList; // Lista multidimencional que contiene los atrib. del heroe.
 
     public RecyclerViewAdaptador(List<Card> cardList) {
         this.cardList = cardList;
@@ -39,6 +41,7 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        /* Crea la vista de cada Card, es el inflador del RecyclerView. */
         View view = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.card,
                 parent,
@@ -48,9 +51,14 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
         return viewHolder;
     }
 
+    /**
+     * Método encargado de asignar el texto y la imagen a cada Card que se crea.
+     * @param holder Parte del inflador que interactua con los componentes de la vista.
+     * @param position Indica la posición en que se esta creando del RecyclerView.
+     */
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        holder.textView.setText(cardList.get(position).getName());
+        holder.textView.setText(cardList.get(position).getName()); // Asignamos el nombre al TextV.
         /*holder.imageLoader.get(
                 cardList.get(position).getImgUrl(),
                 ImageLoader.getImageListener(
@@ -59,6 +67,9 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
                         android.R.drawable.alert_dark_frame
                 )
         );*/
+
+        /* Asignamos la imagen al NetworkImageManager (escuchador) que cargara la imagen
+        de Internet. */
         holder.networkImageView.setImageUrl(cardList.get(position).getImgUrl(), holder.imageLoader);
     }
 

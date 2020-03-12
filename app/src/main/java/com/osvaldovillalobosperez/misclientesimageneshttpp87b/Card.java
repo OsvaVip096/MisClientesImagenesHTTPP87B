@@ -1,5 +1,8 @@
 package com.osvaldovillalobosperez.misclientesimageneshttpp87b;
 
+/**
+ * Objeto Card que contiene los atributos de nombre y URL del heroe.
+ */
 public class Card {
     private String imgUrl;
     private String name;

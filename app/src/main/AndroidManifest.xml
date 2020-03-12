@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.osvaldovillalobosperez.misclientesimageneshttpp87b">
 
+    <!-- Asignamos el permiso de uso de Internet en la app. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
