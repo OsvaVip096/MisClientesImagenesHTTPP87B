@@ -51,14 +51,14 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         holder.textView.setText(cardList.get(position).getName());
-        holder.imageLoader.get(
+        /*holder.imageLoader.get(
                 cardList.get(position).getImgUrl(),
                 ImageLoader.getImageListener(
                         holder.networkImageView,
                         R.mipmap.ic_launcher,
                         android.R.drawable.alert_dark_frame
                 )
-        );
+        );*/
         holder.networkImageView.setImageUrl(cardList.get(position).getImgUrl(), holder.imageLoader);
     }
 
